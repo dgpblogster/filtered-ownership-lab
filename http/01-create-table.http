@@ -1,0 +1,43 @@
+### Create a filtered-ownership table
+# The whole feature is the one property: "OwnershipType": "Filtered".
+# MSCRM.SolutionUniqueName puts the new component straight into your unmanaged solution.
+# @name createTable
+POST {{orgUrl}}/api/data/v9.2/EntityDefinitions HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+OData-MaxVersion: 4.0
+OData-Version: 4.0
+MSCRM.SolutionUniqueName: {{solutionUniqueName}}
+
+{
+  "SchemaName": "{{prefix}}_Store",
+  "OwnershipType": "Filtered",
+  "IsActivity": false,
+  "DisplayName": {
+    "LocalizedLabels": [{ "Label": "Store", "LanguageCode": 1033, "@odata.type": "Microsoft.Dynamics.CRM.LocalizedLabel" }],
+    "@odata.type": "Microsoft.Dynamics.CRM.Label"
+  },
+  "DisplayCollectionName": {
+    "LocalizedLabels": [{ "Label": "Stores", "LanguageCode": 1033, "@odata.type": "Microsoft.Dynamics.CRM.LocalizedLabel" }],
+    "@odata.type": "Microsoft.Dynamics.CRM.Label"
+  },
+  "Description": {
+    "LocalizedLabels": [{ "Label": "Stores organized by city.", "LanguageCode": 1033, "@odata.type": "Microsoft.Dynamics.CRM.LocalizedLabel" }],
+    "@odata.type": "Microsoft.Dynamics.CRM.Label"
+  },
+  "Attributes": [
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "{{prefix}}_Name",
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" },
+      "IsPrimaryName": true,
+      "RequiredLevel": { "Value": "None" },
+      "DisplayName": {
+        "LocalizedLabels": [{ "Label": "Name", "LanguageCode": 1033, "@odata.type": "Microsoft.Dynamics.CRM.LocalizedLabel" }],
+        "@odata.type": "Microsoft.Dynamics.CRM.Label"
+      }
+    }
+  ],
+  "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+}

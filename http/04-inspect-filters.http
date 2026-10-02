@@ -1,0 +1,9 @@
+### What filters are live on this table right now?
+# The one you will actually reuse. statecode eq 0 keeps it to ACTIVE associations, and
+# the $expand pulls each filter's real FetchXML into the same response, so one call
+# gives you the complete picture. First stop when a user reports seeing the wrong rows.
+GET {{orgUrl}}/api/data/v9.2/entityrecordfilters?$select=name,objecttypecode,statecode&$filter=objecttypecode eq '{{prefix}}_store' and statecode eq 0&$expand=RecordFilterId($select=displayname,uniquename,fetchxml) HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+OData-MaxVersion: 4.0
+OData-Version: 4.0

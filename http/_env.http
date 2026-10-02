@@ -1,0 +1,13 @@
+# Variables for the files in this folder.
+#
+# VS Code REST Client: put these in .vscode/settings.json under "rest-client.environmentVariables".
+# Visual Studio / JetBrains: use that tool's own http-client environment file.
+#
+#   orgUrl              https://yourorg.crm.dynamics.com
+#   token               a Microsoft Entra ID access token for orgUrl
+#   prefix              your publisher customization prefix, e.g. new
+#   solutionUniqueName  the unmanaged solution to create components into
+#   recordFilterId      the GUID returned by 02-create-recordfilter.http
+#
+# Get a token with the Azure CLI:
+#   az account get-access-token --resource https://yourorg.crm.dynamics.com --query accessToken -o tsv

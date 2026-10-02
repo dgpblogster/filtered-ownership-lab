@@ -1,0 +1,15 @@
+name: Auto-close pull requests
+on:
+  pull_request_target:
+    types: [opened, reopened]
+permissions:
+  pull-requests: write
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh pr close "$PR" --repo "$REPO" --comment "Thanks for your interest! This repository is a publishing surface for The Workbench blog and does not accept pull requests. If something here does not work on your version, the comments on the related blog post are the right place."
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}

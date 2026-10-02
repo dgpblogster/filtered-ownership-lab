@@ -1,0 +1,16 @@
+### Create a record filter
+# The predicate itself, as a row in the new recordfilter table.
+# The FetchXML root <entity name="..."> MUST match the table you associate it with below.
+# @name createFilter
+POST {{orgUrl}}/api/data/v9.2/recordfilters HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+OData-MaxVersion: 4.0
+OData-Version: 4.0
+MSCRM.SolutionUniqueName: {{solutionUniqueName}}
+
+{
+  "displayname": "Stores in Redmond",
+  "uniquename": "{{prefix}}_storesinredmond",
+  "fetchxml": "<fetch><entity name=\"{{prefix}}_store\"><filter type=\"and\"><condition attribute=\"{{prefix}}_city\" operator=\"eq\" value=\"Redmond\" /></filter></entity></fetch>"
+}

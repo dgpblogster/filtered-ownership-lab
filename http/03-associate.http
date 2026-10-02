@@ -1,0 +1,15 @@
+### Associate the filter with the table
+# This row is what ACTIVATES the predicate for that table.
+# objecttypecode is the table's LOGICAL name as a string, not the display name.
+POST {{orgUrl}}/api/data/v9.2/entityrecordfilters HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+OData-MaxVersion: 4.0
+OData-Version: 4.0
+MSCRM.SolutionUniqueName: {{solutionUniqueName}}
+
+{
+  "name": "Stores in Redmond",
+  "objecttypecode": "{{prefix}}_store",
+  "RecordFilterId@odata.bind": "/recordfilters({{recordFilterId}})"
+}
